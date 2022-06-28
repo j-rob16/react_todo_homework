@@ -12,16 +12,27 @@ function App() {
 
   const [newToDo, setNewToDo] = useState('');
 
+  const [newPriority, setNewPriority] = useState('');
+
   const saveNewToDo = (evt) => {
-    evt.preventDefault()
+    evt.preventDefault();
     const copyTodos = [...todos];
-    copyTodos.push(newToDo);
+    copyTodos.push({name: newToDo, priority: newPriority});
     setTodos(copyTodos);
     setNewToDo('');
+    setNewPriority('');
   }
 
   const handleToDoInput = (evt) => {
     setNewToDo(evt.target.value);
+  }
+
+  const handleHighPriority = (evt) => {
+    setNewPriority(evt.target.value);
+  }
+
+  const handleLowPriority = (evt) => {
+    setNewPriority(evt.target.value);
   }
 
   const todoNodes = todos.map((todo, index) => {
@@ -45,13 +56,14 @@ function App() {
 
         <label htmlFor='new-todo'>Add a new ToDo:</label>
         <input id='new-todo' type='text' value={newToDo} onChange={handleToDoInput}/>
+        
+        <div>
+          <label htmlFor='high-priority'>High</label>
+          <input id='high-priority' type='radio' value='high' onChange={handleHighPriority}/>
 
-        <label htmlFor='high-priority'>High</label>
-        <input id='high-priority' type='radio' value={newToDo} onChange={handleToDoInput}/>
-
-        <label htmlFor='low-priority'>Low</label>
-        <input id='low-priority' type='radio' value={newToDo} onChange={handleToDoInput}/>
-
+          <label htmlFor='low-priority'>Low</label>
+          <input id='low-priority' type='radio' value='low' onChange={handleLowPriority}/>
+        </div>
 
         <input type='submit' value='Add Task'/>
       </form>
