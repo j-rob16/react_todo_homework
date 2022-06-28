@@ -44,8 +44,8 @@ function App() {
   })
 
   return (
-    <div>
-      <h1>Mt ToDo List</h1>
+    <>
+      <h1>My ToDo List</h1>
       <hr></hr>
 
       <ul>
@@ -57,18 +57,15 @@ function App() {
         <label htmlFor='new-todo'>Add a new ToDo:</label>
         <input id='new-todo' type='text' value={newToDo} onChange={handleToDoInput}/>
         
-        <div>
-          <label htmlFor='high-priority'>High</label>
-          <input id='high-priority' type='radio' value='high' onChange={handleHighPriority}/>
+        <label htmlFor='high-priority'>High</label>
+        <input id='high-priority' name='priority' type='radio' value='high' onChange={handleHighPriority}/>
 
-          <label htmlFor='low-priority'>Low</label>
-          <input id='low-priority' type='radio' value='low' onChange={handleLowPriority}/>
-        </div>
+        <label htmlFor='low-priority'>Low</label>
+        <input id='low-priority' name='priority' type='radio' value='low' onChange={handleLowPriority}/>
 
         <input type='submit' value='Add Task'/>
       </form>
-
-    </div>
+    </>
   );
 }
 
